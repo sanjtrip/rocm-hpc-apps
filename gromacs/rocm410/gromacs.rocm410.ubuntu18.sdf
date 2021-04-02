@@ -1,0 +1,29 @@
+# V1.1 ROCM-4.1.0 GROMACS Singularity Container Definition file for Ubuntu18
+# V1.0 ROCM-4.0.1 GROMACS Singularity Container Definition file for Ubuntu18
+#
+Bootstrap: docker-daemon
+From: amddcgpuce/gromacs-rocm410-ubuntu18:version1
+#Bootstrap: docker-archive
+#From: gromacs.rocm410.ubuntu18.docker.tar.gz
+
+%post
+    NOW=`date`
+    echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
+
+%environment
+    export PATH=/usr/local/gromacs/bin:/opt/rocm-4.1.0/bin:/opt/rocm-4.1.0/opencl/bin:$PATH
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
+%runscript
+    echo "Container was created $NOW"
+    cd /opt/gromacs
+    . /usr/local/gromacs/bin/GMXRC
+    echo "CWD: /opt/gromacs Launching: $*"
+    exec "$@"
+
+%help
+    singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cp -r benchmark $HOME/Documents/"
+    singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/benchmark/adh_dodec; /usr/local/gromacs/bin/gmx_mpi grompp -f pme_verlet.mdp -c conf.gro -p topol.top -maxwarn 20"
+    singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/benchmark; ./run.sh"
