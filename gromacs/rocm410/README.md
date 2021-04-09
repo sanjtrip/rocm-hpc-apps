@@ -21,6 +21,7 @@ $ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 ```
 
 
+##
 ### SECTION B: How to Test Gromacs Docker container
 ```
 
@@ -29,4 +30,5 @@ $ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 # gmx_mpi grompp -f pme_verlet.mdp -c conf.gro -p topol.top -maxwarn 20
 # cd /opt/gromacs/benchmark/
 # ./run.sh
+```
 
