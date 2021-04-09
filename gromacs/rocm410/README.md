@@ -17,7 +17,6 @@ $ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 
 # Verify loading of Gromacs Docker
 $ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
-
 ```
 
 ## Testing How to Test Gromacs Docker container
