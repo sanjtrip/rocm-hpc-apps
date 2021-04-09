@@ -21,7 +21,7 @@ $ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 ```
 
 
-##
+## Sanity Testing
 ### SECTION B: How to Test Gromacs Docker container
 ```
 
