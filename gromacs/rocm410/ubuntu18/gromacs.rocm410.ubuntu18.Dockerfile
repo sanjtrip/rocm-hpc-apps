@@ -1,5 +1,5 @@
 # V1.3 ROCM 4.1.0 Gromacs Dockerfile for Ubuntu18
-# V1.2 ROCm Dockerfile
+
 FROM ubuntu:18.04
 
 RUN sed -i -e "s/\/archive.ubuntu/\/us.archive.ubuntu/" /etc/apt/sources.list && \
@@ -83,9 +83,6 @@ RUN sed -i -e "s/\/archive.ubuntu/\/us.archive.ubuntu/" /etc/apt/sources.list &&
 #
 RUN /bin/sh -c 'ln -sf /opt/rocm-4.1.0 /opt/rocm'
 
-# Control Build target list - testing in 4.1b#26 
-#RUN sh -c 'echo "gfx803\ngfx900\ngfx906\ngfx908" >> /opt/rocm/bin/target.lst'
-
 #
 RUN locale-gen en_US.UTF-8
 
@@ -94,6 +91,12 @@ ENV PATH="/opt/rocm-4.1.0/bin:/opt/rocm-4.1.0/opencl/bin:${PATH}"
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+
+# Check ROCm-Kernel compatibility
+COPY rocm41test.sh /root/rocm41test.sh
+RUN chmod a+x /root/rocm41test.sh
+
+ENTRYPOINT ["/root/rocm41test.sh"]
 
 
 ##### UCX & PMI build section
@@ -154,11 +157,6 @@ RUN cd $INSTALL_DIR &&\
 
 #
 RUN rm -rf $INSTALL_DIR/gromacs_2020.3.tgz $INSTALL_DIR/gromacs_benchmark.tgz $INSTALL_DIR/Gromacs
-
-COPY rocm41test.sh /root/rocm41test.sh
-RUN chmod a+x /root/rocm41test.sh
-
-ENTRYPOINT ["/root/rocm41test.sh"]
 
 # Default to a login shell
 CMD ["bash", "-l"]
