@@ -1,3 +1,3 @@
-#Repository of Container Definition Files for ROCm & ROCm Based Apps
+# Repository_ROCm_Containers
 
 Dockerfile, Singularity Definition files for ROCm and ROCm-based applications
