@@ -1,4 +1,4 @@
 # Gromacs
 
-ROCm-4.1.0 based Docker and Singularity Container Files
+ROCm-4.0.1 based Docker and Singularity Container Files
 
