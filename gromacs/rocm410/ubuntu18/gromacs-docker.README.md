@@ -1,8 +1,8 @@
-# README for Loading and Testing of ROM4.1 Based GROMACS HPC-Application Docker
+## README for Loading and Testing of ROM4.1 Based GROMACS HPC-Application Docker
 
 Assuming Docker packages are installed.
 
-## How to Load/Run Gromacs Docker container
+### Load/Run Gromacs Docker container
 
 ```
 # Download the Gromacs Docker for Ubuntu18 from :
@@ -19,12 +19,14 @@ $ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 $ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 ```
 
-## Testing How to Test Gromacs Docker container
+### Test Gromacs Docker container
 
 ```
 # source /usr/local/gromacs/bin/GMXRC
 # cd /opt/gromacs/benchmark/adh_dodec
 # gmx_mpi grompp -f pme_verlet.mdp -c conf.gro -p topol.top -maxwarn 20
+---- output snipped ------
 # cd /opt/gromacs/benchmark/
 # ./run.sh
+---- output snipped ------
 ```
