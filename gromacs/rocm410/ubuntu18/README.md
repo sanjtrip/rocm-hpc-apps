@@ -1,24 +1,29 @@
-## ROCm-4.1.0 Based GROMACS HPC-Application Docker
+## ROCm-4.1.0-based GROMACS HPC Application Docker
 
 Assuming Docker packages are installed.
 
-### Load/Run Gromacs Docker container
+### Steps to run the container
 
 ```
-# Run the Gromacs Docker container 
-$ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
+# On Ubuntu or CentOS/RHEL where docker is installed, use:
+sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
 	seccomp=unconfined sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
 
+
+# Use podman on CentOS8/RHEL8 to run docker container using:
+sudo podman run -it --privileged --ipc=host --network=host --device=/dev/kfd \
+	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
+	seccomp=unconfined docker://sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
 ```
 
-### Building GROMACS Singularity container from Docker image
+### Steps to build Singularity container for GROMACS from docker image
 
 ```
 # Download GROMACS Singularity Definition file
 wget -O gromacs.rocm410.ubuntu18.sdf --no-check-certificate https://raw.githubusercontent.com/sanjtrip/rocm-hpc-apps/master/gromacs/rocm410/ubuntu18/gromacs.rocm410.ubuntu18.sdf
 
-# Build Singularity image, bootstrap from amddcgpuce docker image
+# Build Singularity image, bootstrap from docker image
 # (replace path to Singularity installation as appropriate)
 sudo /usr/local/bin/singularity build gromacs.rocm410.ubuntu18.sif gromacs.rocm410.ubuntu18.sdf
 ```
