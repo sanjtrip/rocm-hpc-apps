@@ -1,0 +1,27 @@
+# V1.1 ROCM-4.1.0 LAMMPS Singularity Container Definition file for Ubuntu18
+# V1.0 ROCM-4.0.1 LAMMPS Singularity Container Definition file for Ubuntu18
+
+#Bootstrap: docker-archive
+#From: lammps.rocm410.ubuntu18.docker.tar.gz
+Bootstrap: docker-daemon
+From: amddcgpuce/lammps-rocm410-ubuntu18:version1
+
+%post
+    NOW=`date`
+    echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
+
+%environment
+    export PATH=/opt/ompi/bin:/opt/rocm-4.1.0/bin:/opt/rocm-4.1.0/opencl/bin:$PATH
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+
+%runscript
+    echo "Container was created $NOW"
+    cd /opt/lammps_install/lammps
+    echo "CWD: /opt/lammps_install/lammps Launching: $*"
+    exec "$@"
+
+%help
+    singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd /opt/lammps_install/lammps; cp -r examples/melt $HOME/Documents/"
+    singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/melt; LD_LIBRARY_PATH=/opt/ompi/lib /opt/ompi/bin/mpirun -np 1 lmp  -in in.melt -sf gpu -pk gpu 1"
