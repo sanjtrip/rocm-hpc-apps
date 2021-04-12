@@ -8,15 +8,11 @@ Assuming Docker packages are installed.
 # Download the Gromacs Docker for Ubuntu18 from :
 	https://hub.docker.com/r/sanjtrip/private-gromacs-rocm410-ubuntu18
 
-$ sudo docker pull sanjtrip/private-gromacs-rocm410-ubuntu18:version1
-
 # Run the Gromacs Docker container 
 $ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
 	seccomp=unconfined sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
 
-# Verify loading of Gromacs Docker
-$ sudo docker image ls sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 ```
 
 ### Test Gromacs Docker container
