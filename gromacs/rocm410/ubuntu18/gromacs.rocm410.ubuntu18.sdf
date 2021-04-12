@@ -5,7 +5,7 @@
 #Bootstrap: docker-archive
 #From: gromacs.rocm410.ubuntu18.docker.tar.gz
 Bootstrap: docker-daemon
-From: amddcgpuce/gromacs-rocm410-ubuntu18:version1
+From: sanjtrip/private-gromacs-rocm410-ubuntu18:version1
 
 %post
     NOW=`date`
