@@ -12,7 +12,7 @@ $ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 
 ```
 
-### Building GROMACS Singularity container from amddcgpuce docker image
+### Building GROMACS Singularity container from Docker image
 
 ```
 # Download GROMACS Singularity Definition file
