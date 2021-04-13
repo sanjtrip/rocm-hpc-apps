@@ -1,4 +1,4 @@
-# V1.3 ROCM-4.1.0 LAMMPS Dockerfile
+# V1.3 ROCm-4.1.0 LAMMPS HPC Application Dockerfile for Ubuntu18
 
 FROM ubuntu:18.04
 
@@ -83,9 +83,6 @@ RUN sed -i -e "s/\/archive.ubuntu/\/us.archive.ubuntu/" /etc/apt/sources.list &&
 
 #
 RUN /bin/sh -c 'ln -sf /opt/rocm-4.1.0 /opt/rocm'
-
-#
-RUN sh -c 'echo "gfx803\ngfx900\ngfx906\ngfx908" >> /opt/rocm-4.1.0/bin/target.lst'
 
 #
 RUN locale-gen en_US.UTF-8
