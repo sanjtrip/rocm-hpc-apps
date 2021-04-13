@@ -2,7 +2,7 @@
 # V1.0 ROCM-4.0.1 GROMACS Singularity Container Definition file for Ubuntu18
 
 
-Bootstrap: docker-daemon
+Bootstrap: docker
 From: sanjtrip/private-rocm410-ubuntu18:version1
 
 %post
