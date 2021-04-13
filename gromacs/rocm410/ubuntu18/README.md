@@ -12,9 +12,8 @@ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 
 
 # Use podman on CentOS8/RHEL8 to run docker container using:
-sudo podman run -it --privileged --ipc=host --network=host --device=/dev/kfd \
-	--device=/dev/dri --group-add video --security-opt seccomp=unconfined \
-	docker://sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
+sudo podman run -it --privileged docker://sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
+
 ```
 
 ### Steps to build Singularity container for GROMACS from docker image
@@ -72,7 +71,6 @@ CWD: /opt/gromacs Launching: /bin/bash -c cd /home/sanjay/Documents/benchmark; .
 # Error message seen with Docker container With incompatible ROCm-kernel version :
 
 sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd --device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
-[sudo] password for sanjay:
 
 Error: Incompatible ROCm environment. The Docker container
 requires the latest kernel driver to operate correctly.
