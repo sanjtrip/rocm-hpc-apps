@@ -13,8 +13,8 @@ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
 
 # Use podman on CentOS8/RHEL8 to run docker container using:
 sudo podman run -it --privileged --ipc=host --network=host --device=/dev/kfd \
-	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
-	seccomp=unconfined docker://sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
+	--device=/dev/dri --group-add video --security-opt seccomp=unconfined \
+	docker://sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
 ```
 
 ### Steps to build Singularity container for GROMACS from docker image
@@ -62,6 +62,39 @@ CWD: /opt/gromacs Launching: /bin/bash -c cd /home/sanjay/Documents/benchmark/ad
 singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/benchmark; ./run.sh"
 Container was created Sat Apr 10 05:45:18 UTC 2021
 CWD: /opt/gromacs Launching: /bin/bash -c cd /home/sanjay/Documents/benchmark; ./run.sh
+--------------------------------------------------------------------------
+...output snipped...
+```
+
+### Incompatible ROCm-Kernel version
+
+```
+# Error message seen with Docker container With incompatible ROCm-kernel version :
+
+sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd --device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined sanjtrip/private-gromacs-rocm410-ubuntu18:version1 bash
+[sudo] password for sanjay:
+
+Error: Incompatible ROCm environment. The Docker container
+requires the latest kernel driver to operate correctly.
+
+Upgrade the ROCm kernel to v4.1 or newer, or use a container
+tagged for v4.0.1 or older.
+
+To inspect the version of the installed kernel driver, run either:
+    . dpkg --status rock-dkms [Debian-based]
+    . rpm -ql rock-dkms [RHEL, SUSE, and others]
+
+To install or update the driver, follow the installation instructions at:
+    https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html
+
+
+
+# Error message seen with Singularity container With incompatible ROCm-kernel version :
+
+singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/benchmark/adh_dodec; /usr/local/gromacs/bin/gmx_mpi grompp -f pme_verlet.mdp -c conf.gro -p topol.top -maxwarn 20"
+Container was created Tue Apr 13 00:17:10 UTC 2021
+CWD: /opt/gromacs Launching: /bin/bash -c cd /home/sanjay/Documents/benchmark/adh_dodec; /usr/local/gromacs/bin/gmx_mpi grompp -f pme_verlet.mdp -c conf.gro -p topol.top -maxwarn 20
+HSA Error:  Incompatible kernel and userspace, Device 66a1 disabled. Upgrade amdgpu.
 --------------------------------------------------------------------------
 ...output snipped...
 ```
