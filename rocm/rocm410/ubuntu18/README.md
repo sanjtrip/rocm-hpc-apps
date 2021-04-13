@@ -97,4 +97,18 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/rocm-4.1.0/hip/sam
 ```
 ###### Output
 ```
+Container was created Tue Apr 13 19:18:40 UTC 2021
+
+Error: Incompatible ROCm environment. The Docker container
+requires the latest kernel driver to operate correctly.
+
+Upgrade the ROCm kernel to v4.1 or newer, or use a container
+tagged for v4.0.1 or older.
+
+To inspect the version of the installed kernel driver, run either:
+    . dpkg --status rock-dkms [Debian-based]
+    . rpm -ql rock-dkms [RHEL, SUSE, and others]
+
+To install or update the driver, follow the installation instructions at:
+    https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html
 ```
