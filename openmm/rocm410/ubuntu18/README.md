@@ -36,21 +36,30 @@ singularity run-help openmm.rocm410.ubuntu18.sif
 ```
 ##### Output
 ```
+    singularity run openmm.rocm410.ubuntu18.sif $HOME/Documents/openmm-test/openmmtest.py
+    singularity run openmm.rocm410.ubuntu18.sif ./TestHipBrownianIntegrator
 ```
 
 ### Copy OPENMM benchmark samples from container to $HOME/Documents on host
 ```
+singularity run openmm.rocm410.ubuntu18.sif $HOME/Documents/openmm-test/openmmtest.py
 ```
 ##### Output
 ```
+Container was created Wed Apr 14 17:49:13 UTC 2021
+CWD: /opt/openmm/build Launching: /home/sanjay/Documents/openmm-test/openmmtest.py
+7.5
 ```
 
 ### Running sample benchmark after above copy
 ```
+singularity run openmm.rocm410.ubuntu18.sif ./TestHipBrownianIntegrator
 ```
 ##### Output
 ```
-...output snipped...
+Container was created Wed Apr 14 17:49:13 UTC 2021
+CWD: /opt/openmm/build Launching: ./TestHipBrownianIntegrator
+Done
 ```
 
 ## 4.0 Incompatible ROCm Environment Check Message (NEW)
@@ -80,10 +89,11 @@ To install or update the driver, follow the installation instructions at:
 
 #### Singularity Run Failure Message On Incompatible ROCm Environment
 ```
+singularity run openmm.rocm410.ubuntu18.sif $HOME/Documents/openmm-test/openmmtest.py
 ```
 ###### Output
 ```
-Container was created Tue Apr 13 22:40:25 UTC 2021
+Container was created Wed Apr 14 18:08:28 UTC 2021
 
 Error: Incompatible ROCm environment. The Docker container
 requires the latest kernel driver to operate correctly.
