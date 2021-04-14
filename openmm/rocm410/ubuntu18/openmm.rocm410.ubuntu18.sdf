@@ -1,10 +1,10 @@
-# V1.3 - ROCM OPENMM Singularity Definition File
+# V1.3 - ROCm-4.1.0 OPENMM Singularity Definition File for Ubuntu18
+# V1.2 - ROCm-4.0.1 OPENMM Singularity Definition File for Ubuntu18
 #
 
-#Bootstrap: docker-archive
-#From: openmm.rocm410.ubuntu18.docker.tar.gz
-Bootstrap: docker-daemon
-From: amddcgpuce/openmm-rocm410-ubuntu18:version1
+
+Bootstrap: docker
+From: sanjtrip/private-openmm-rocm410-ubuntu18:version1
 
 %post
     NOW=`date`

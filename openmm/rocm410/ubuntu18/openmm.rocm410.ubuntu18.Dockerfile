@@ -1,4 +1,4 @@
-# V1.3 ROCM-4.1.0 OpenMM Dockerfile
+# V1.3 ROCM-4.1.0 OpenMM HPC Application Dockerfile
 
 FROM ubuntu:18.04
 
