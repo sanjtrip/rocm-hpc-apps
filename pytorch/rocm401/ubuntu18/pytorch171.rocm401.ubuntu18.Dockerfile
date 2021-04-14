@@ -1,4 +1,4 @@
-# V1.0 - ROCm-4.0.1-based Pytorch Dockerfile 
+# V1.0 - ROCm-4.0.1-based Pytorch-1.7.1 Dockerfile 
 
 FROM ubuntu:18.04
 

@@ -2,7 +2,7 @@
 #
 
 Bootstrap: docker
-From: sanjtrip/pytorch-rocm401-ubuntu18:version1
+From: sanjtrip/pytorch171-rocm401-ubuntu18:version1
 
 %post
     NOW=`date`
@@ -21,6 +21,6 @@ From: sanjtrip/pytorch-rocm401-ubuntu18:version1
     exec "$@"
 
 %help
-    singularity run pytorch.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking"
-    singularity run pytorch.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnet101"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnet101"
 
