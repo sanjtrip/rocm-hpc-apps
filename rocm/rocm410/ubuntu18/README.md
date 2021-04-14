@@ -59,8 +59,14 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/samples/0_
 Container was created Tue Apr 13 17:29:01 UTC 2021
 CWD: /home/USERHOME Launching: /bin/bash -c cd /home/USERHOME/Documents/samples/0_Intro/bit_extract; make HIP_PATH=/opt/rocm-4.1.0/hip; ./bit_extract
 /opt/rocm-4.1.0/hip/bin/hipcc  bit_extract.cpp -o bit_extract
---------------------------------------------------------------------------
-...output snipped...
+info: running on device #0 Device 66a1
+info: allocate host mem (  7.63 MB)
+info: allocate device mem (  7.63 MB)
+info: copy Host2Device
+info: launch 'bit_extract_kernel' 
+info: copy Device2Host
+info: check result
+PASSED!
 ```
 
 ## 4.0 Incompatible ROCm Environment Check Message (NEW)
