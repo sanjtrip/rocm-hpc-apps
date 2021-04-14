@@ -5,9 +5,7 @@
 #### On Ubuntu 18/20 HWE, CentOS/RHEL 7.x, or SLES 15 SP2, use docker:
 ```
 # Launch container in interactive mode, bash shell
-sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
-	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
-	seccomp=unconfined sanjtrip/private-rocm410-ubuntu18:version1 bash
+sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd --device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined sanjtrip/private-rocm410-ubuntu18:version1 bash
 ```
 #### On CentOS/RHEL 8.x, use podman:
 ```
