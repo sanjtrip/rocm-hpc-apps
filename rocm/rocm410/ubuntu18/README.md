@@ -47,7 +47,7 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/rocm-4.1.0/hip/sam
 ##### Output
 ```
 Container was created Tue Apr 13 17:29:01 UTC 2021
-CWD: /home/sanjay Launching: /bin/bash -c cp -r /opt/rocm-4.1.0/hip/samples/ /home/sanjay/Documents/
+CWD: /home/USERHOME Launching: /bin/bash -c cp -r /opt/rocm-4.1.0/hip/samples/ /home/USERHOME/Documents/
 ```
 
 ### Running sample benchmark after above copy
@@ -57,7 +57,7 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/samples/0_
 ##### Output
 ```
 Container was created Tue Apr 13 17:29:01 UTC 2021
-CWD: /home/sanjay Launching: /bin/bash -c cd /home/sanjay/Documents/samples/0_Intro/bit_extract; make HIP_PATH=/opt/rocm-4.1.0/hip; ./bit_extract
+CWD: /home/USERHOME Launching: /bin/bash -c cd /home/USERHOME/Documents/samples/0_Intro/bit_extract; make HIP_PATH=/opt/rocm-4.1.0/hip; ./bit_extract
 /opt/rocm-4.1.0/hip/bin/hipcc  bit_extract.cpp -o bit_extract
 --------------------------------------------------------------------------
 ...output snipped...
