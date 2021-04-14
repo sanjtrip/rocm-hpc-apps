@@ -1,6 +1,6 @@
 # ROCm-based Pytorch Singularity Container Example With ROCm 4.0.1
 
-### Building Pytorch singularity container from amddcgpuce docker image
+### Building Pytorch singularity container from docker image
 
 ```
 # Download Pytorch Singularity Definition file
