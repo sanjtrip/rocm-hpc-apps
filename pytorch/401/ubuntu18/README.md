@@ -4,7 +4,7 @@
 
 ```
 # Download Pytorch Singularity Definition file
-wget -O pytorch.rocm401.ubuntu18.sdf --no-check-certificate https://raw.githubusercontent.com/amddcgpuce/rocmcontainers/main/pytorch/pytorch.rocm401.ubuntu18.sdf
+wget -O pytorch.rocm401.ubuntu18.sdf --no-check-certificate https://raw.githubusercontent.com/sanjtrip/rocm-hpc-apps/master/pytorch/rocm401/ubuntu18/pytorch.rocm401.ubuntu18.sdf
 
 # Build Singularity image, bootstrap from amddcgpuce docker image
 # (replace path to Singularity installation as appropriate)
