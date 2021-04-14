@@ -1,5 +1,5 @@
-# V1.0 - ROCM Pytorch Dockerfile 
-# V1.2
+# V1.0 - ROCm-4.0.1-based Pytorch Dockerfile 
+
 FROM ubuntu:18.04
 
 RUN apt-get clean && \
@@ -58,14 +58,14 @@ RUN apt-get clean && \
     unzip \
     vim \
     xsltproc && \
-        pip3 install Cython && \
-        pip3 install numpy && \
-        pip3 install optionloop && \
-        pip install Cython && \
-        pip install numpy && \
-        pip install optionloop && \
-        pip install setuptools && \
-        pip install CppHeaderParser argparse && \
+    pip3 install Cython && \
+    pip3 install numpy && \
+    pip3 install optionloop && \
+    pip install Cython && \
+    pip install numpy && \
+    pip install optionloop && \
+    pip install setuptools && \
+    pip install CppHeaderParser argparse && \
     ldconfig && \
     cd $HOME && \
     apt-get clean && \
@@ -108,4 +108,3 @@ RUN cd /opt/ && \
 
 # Default to a login shell
 CMD ["bash", "-l"]
-
