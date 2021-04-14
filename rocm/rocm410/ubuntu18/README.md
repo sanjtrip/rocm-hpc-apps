@@ -5,9 +5,7 @@
 #### On Ubuntu 18/20 HWE, CentOS/RHEL 7.x, or SLES 15 SP2, use docker:
 ```
 # Launch container in interactive mode, bash shell
-sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd \
-	--device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt \
-	seccomp=unconfined sanjtrip/private-rocm410-ubuntu18:version1 bash
+sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd --device=/dev/dri --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined sanjtrip/private-rocm410-ubuntu18:version1 bash
 ```
 #### On CentOS/RHEL 8.x, use podman:
 ```
@@ -49,7 +47,7 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/rocm-4.1.0/hip/sam
 ##### Output
 ```
 Container was created Tue Apr 13 17:29:01 UTC 2021
-CWD: /home/sanjay Launching: /bin/bash -c cp -r /opt/rocm-4.1.0/hip/samples/ /home/sanjay/Documents/
+CWD: /home/USERHOME Launching: /bin/bash -c cp -r /opt/rocm-4.1.0/hip/samples/ /home/USERHOME/Documents/
 ```
 
 ### Running sample benchmark after above copy
@@ -59,10 +57,16 @@ singularity run rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/samples/0_
 ##### Output
 ```
 Container was created Tue Apr 13 17:29:01 UTC 2021
-CWD: /home/sanjay Launching: /bin/bash -c cd /home/sanjay/Documents/samples/0_Intro/bit_extract; make HIP_PATH=/opt/rocm-4.1.0/hip; ./bit_extract
+CWD: /home/USERHOME Launching: /bin/bash -c cd /home/USERHOME/Documents/samples/0_Intro/bit_extract; make HIP_PATH=/opt/rocm-4.1.0/hip; ./bit_extract
 /opt/rocm-4.1.0/hip/bin/hipcc  bit_extract.cpp -o bit_extract
---------------------------------------------------------------------------
-...output snipped...
+info: running on device #0 Device 66a1
+info: allocate host mem (  7.63 MB)
+info: allocate device mem (  7.63 MB)
+info: copy Host2Device
+info: launch 'bit_extract_kernel' 
+info: copy Device2Host
+info: check result
+PASSED!
 ```
 
 ## 4.0 Incompatible ROCm Environment Check Message (NEW)
