@@ -36,18 +36,18 @@ singularity run-help pytorch171.rocm401.ubuntu18.sif
 ```
 ##### Output
 ```
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch-micro-benchmarking $HOME/Documents; cd $HOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch/caffe2/python/examples $HOME/Documents; cd $HOME/Documents/examples; python3 $HOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
 ```
 
 ### Running sample benchmark#1
 ```
-singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch-micro-benchmarking $HOME/Documents; cd $HOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 17:25:27 UTC 2021
-CWD: /opt/pytorch Launching: /bin/bash -c cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
+Container was created Thu Apr 15 20:38:05 UTC 2021
+CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch-micro-benchmarking /home/USERHOME/Documents; cd /home/USERHOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
 INFO: running forward and backward for warmup.
 INFO: running the benchmark..
 OK: finished running benchmark..
@@ -56,17 +56,17 @@ Microbenchmark for network : resnext101
 Num devices: 1
 Dtype: FP32
 Mini batch size [img] : 128
-Time per mini-batch : 1.8520722937583924
-Throughput [img/sec] : 69.11177302925408
+Time per mini-batch : 1.8641224884986878
+Throughput [img/sec] : 68.66501573246275
 ```
 ### Running sample benchmark#2
 ```
-singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch/caffe2/python/examples $HOME/Documents; cd $HOME/Documents/examples; python3 $HOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 17:25:27 UTC 2021
-CWD: /opt/pytorch Launching: /bin/bash -c cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
+Container was created Thu Apr 15 20:38:05 UTC 2021
+CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch/caffe2/python/examples /home/USERHOME/Documents; cd /home/USERHOME/Documents/examples; python3 /home/USERHOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
 Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops as it is not a valid file.
 Ignoring @/caffe2/caffe2/contrib/nccl:nccl_ops as it is not a valid file.
 Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops_gpu as it is not a valid file.

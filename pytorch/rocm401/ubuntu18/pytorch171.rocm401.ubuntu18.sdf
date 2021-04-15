@@ -20,6 +20,6 @@ From: sanjtrip/pytorch171-rocm401-ubuntu18:version1
     exec "$@"
 
 %help
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
-#
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch-micro-benchmarking $HOME/Documents; cd $HOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch/caffe2/python/examples $HOME/Documents; cd $HOME/Documents/examples; python3 $HOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+
