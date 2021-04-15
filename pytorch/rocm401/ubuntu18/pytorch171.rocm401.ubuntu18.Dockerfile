@@ -61,6 +61,8 @@ RUN apt-get clean && \
     pip3 install Cython && \
     pip3 install numpy && \
     pip3 install optionloop && \
+    pip3 install protobuf && \
+    pip3 install networkx && \
     pip install Cython && \
     pip install numpy && \
     pip install optionloop && \
