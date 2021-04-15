@@ -12,7 +12,7 @@ From: sanjtrip/pytorch171-rocm401-ubuntu18:version1
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
-    export PATH=/opt/pytorch-micro-benchmarking:/opt/rocm-4.0.1/bin:/opt/rocm-4.0.1/opencl/bin:$PATH
+    export PATH=/opt/rocm-4.0.1/bin:/opt/rocm-4.0.1/opencl/bin:$PATH
 
 %runscript
     echo "Container was created $NOW"
