@@ -16,7 +16,6 @@ From: sanjtrip/pytorch171-rocm401-ubuntu18:version1
 
 %runscript
     echo "Container was created $NOW"
-    cd /opt/pytorch
     echo "CWD: /opt/pytorch Launching: $*"
     exec "$@"
 
