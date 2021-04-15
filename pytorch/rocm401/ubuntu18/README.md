@@ -36,37 +36,50 @@ singularity run-help pytorch171.rocm401.ubuntu18.sif
 ```
 ##### Output
 ```
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch/; cp -r caffe2 $HOME/Documents/pytorch/; cd /opt/pytorch/; cp -r benchmarks $HOME/Documents/pytorch/"
-   singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100" 
-   singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
 ```
 
-### Copy Pytorch benchmark samples from container to $HOME/Documents on host
+### Running sample benchmark#1
 ```
-singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch; cp -r caffe2 $HOME/Documents/pytorch/caffe2; cp -r benchmarks $HOME/Documents/pytorch/benchmarks"
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
 ```
 ##### Output
 ```
-```
-
-### Running sample benchmark#1 after above copy
-```
-singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
-```
-##### Output
-```
-Container was created Thu Apr 15 08:54:36 UTC 2021
-Benchmark Launching: /bin/bash -c cd /home/master/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
+Container was created Thu Apr 15 17:25:27 UTC 2021
+CWD: /opt/pytorch Launching: /bin/bash -c cd /opt/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
 INFO: running forward and backward for warmup.
-...output snipped...
+INFO: running the benchmark..
+OK: finished running benchmark..
+--------------------SUMMARY--------------------------
+Microbenchmark for network : resnext101
+Num devices: 1
+Dtype: FP32
+Mini batch size [img] : 128
+Time per mini-batch : 1.8520722937583924
+Throughput [img/sec] : 69.11177302925408
 ```
-### Running sample benchmark#2 after above copy
+### Running sample benchmark#2
 ```
-singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 08:54:36 UTC 2021
-Benchmark Launching: /bin/bash -c cd /home/master/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
+Container was created Thu Apr 15 17:25:27 UTC 2021
+CWD: /opt/pytorch Launching: /bin/bash -c cd /opt/pytorch; python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
+Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops as it is not a valid file.
+Ignoring @/caffe2/caffe2/contrib/nccl:nccl_ops as it is not a valid file.
+Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops_gpu as it is not a valid file.
+Ignoring @/caffe2/caffe2/distributed:file_store_handler_ops as it is not a valid file.
+Ignoring @/caffe2/caffe2/distributed:redis_store_handler_ops as it is not a valid file.
+[E init_intrinsics_check.cc:43] CPU feature avx is present on your machine, but the Caffe2 binary is not compiled with it. It means you may not get the full speed of your CPU.
+[E init_intrinsics_check.cc:43] CPU feature avx2 is present on your machine, but the Caffe2 binary is not compiled with it. It means you may not get the full speed of your CPU.
+[E init_intrinsics_check.cc:43] CPU feature fma is present on your machine, but the Caffe2 binary is not compiled with it. It means you may not get the full speed of your CPU.
+INFO:Imagenet_trainer:Running on GPUs: [0, 1]
+INFO:Imagenet_trainer:Using epoch size: 992
+INFO:data_parallel_model:Parallelizing model for devices: [0, 1]
+INFO:data_parallel_model:Create input and model training operators
+INFO:data_parallel_model:Model for GPU : 0
+INFO:data_parallel_model:Model for GPU : 1
 ...output snipped...
 ```
