@@ -32,22 +32,43 @@ sudo singularity build pytorch171.rocm401.ubuntu18.sif pytorch171.rocm401.ubuntu
 ## 3.0 Example Usage of Pytorch Singularity Container
 ### Run Help
 ```
-singularity run-help pytorch.rocm401.ubuntu18.sif
+singularity run-help pytorch171.rocm401.ubuntu18.sif
 ```
 ##### Output
 ```
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch; cp -r caffe2 $HOME/Documents/pytorch/caffe2; cp -r benchmarks $HOME/Documents/pytorch/benchmarks"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
 ```
 
 ### Copy Pytorch benchmark samples from container to $HOME/Documents on host
 ```
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch; cp -r caffe2 $HOME/Documents/pytorch/caffe2; cp -r benchmarks $HOME/Documents/pytorch/benchmarks"
 ```
 ##### Output
 ```
+Container was created Thu Apr 15 05:07:31 UTC 2021
+Benchmark Launching: /bin/bash -c cd /opt/pytorch-micro-benchmarking; cp -r . /home/USERHOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch; cp -r caffe2 /home/USERHOME/Documents/pytorch/caffe2; cp -r benchmarks /home/USERHOME/Documents/pytorch/benchmarks
 ```
 
-### Running sample benchmark after above copy
+### Running sample benchmark#1 after above copy
 ```
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
 ```
 ##### Output
 ```
+Container was created Thu Apr 15 05:07:31 UTC 2021
+Benchmark Launching: /bin/bash -c cd /home/USERHOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
+INFO: running forward and backward for warmup.
+...output snipped...
+```
+### Running sample benchmark#2 after above copy
+```
+singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+```
+##### Output
+```
+Container was created Thu Apr 15 05:07:31 UTC 2021
+Benchmark Launching: /bin/bash -c cd /home/USERHOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
+...output snipped...
 ```
