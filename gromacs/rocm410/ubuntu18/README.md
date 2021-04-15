@@ -70,7 +70,7 @@ singularity run gromacs.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/be
 ##### Output
 ```
 Container was created Sat Apr 10 05:45:18 UTC 2021
-CWD: /opt/gromacs Launching: /bin/bash -c cd /home/sanjay/Documents/benchmark; ./run.sh
+CWD: /opt/gromacs Launching: /bin/bash -c cd /home/USERHOME/Documents/benchmark; ./run.sh
 --------------------------------------------------------------------------
 ...output snipped...
 ```

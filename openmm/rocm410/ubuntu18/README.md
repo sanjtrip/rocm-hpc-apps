@@ -47,7 +47,7 @@ singularity run openmm.rocm410.ubuntu18.sif $HOME/Documents/openmm-test/openmmte
 ##### Output
 ```
 Container was created Wed Apr 14 17:49:13 UTC 2021
-CWD: /opt/openmm/build Launching: /home/sanjay/Documents/openmm-test/openmmtest.py
+CWD: /opt/openmm/build Launching: /home/USERHOME/Documents/openmm-test/openmmtest.py
 7.5
 ```
 

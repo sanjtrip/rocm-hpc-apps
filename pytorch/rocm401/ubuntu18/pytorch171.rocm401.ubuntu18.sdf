@@ -21,6 +21,6 @@ From: sanjtrip/pytorch171-rocm401-ubuntu18:version1
     exec "$@"
 
 %help
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking"
-    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnet101"
-
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd /opt/pytorch-micro-benchmarking; cp -r . $HOME/Documents/pytorch-micro-benchmarking; cd /opt/pytorch; cp -r . $HOME/Documents/pytorch/caffe2; cp -r . $HOME/Documents/pytorch/benchmarks"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch-micro-benchmarking; LD_LIBRARY_PATH=/opt/rocm/lib python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch171.rocm401.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/pytorch; LD_LIBRARY_PATH=/opt/rocm/lib python3 caffe2/python/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
