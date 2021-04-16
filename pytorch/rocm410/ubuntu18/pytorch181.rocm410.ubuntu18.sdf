@@ -1,0 +1,25 @@
+# V1.1 ROCM-4.1.0-based Pytorch-1.8.1 Singularity Container Definition file for Ubuntu18
+#
+
+Bootstrap: docker
+From: sanjtrip/pytorch181-rocm410-ubuntu18:version1
+
+%post
+    NOW=`date`
+    echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
+
+%environment
+    export LANGUAGE=en_US.UTF-8
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export PATH=/opt/rocm-4.1.0/bin:/opt/rocm-4.1.0/opencl/bin:$PATH
+
+%runscript
+    echo "Container was created $NOW"
+    echo "CWD: /opt/pytorch Launching: $*"
+    exec "$@"
+
+%help
+    singularity run pytorch181.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch-micro-benchmarking $HOME/Documents; cd $HOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100"
+    singularity run pytorch181.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch/caffe2/python/examples $HOME/Documents; cd $HOME/Documents/examples; python3 $HOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2"
+
