@@ -46,7 +46,7 @@ singularity run pytorch171.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 23:21:15 UTC 2021
+Container was created Fri Apr 16 00:38:26 UTC 2021
 CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch-micro-benchmarking /home/USERHOME/Documents; cd /home/USERHOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
 INFO: running forward and backward for warmup.
 INFO: running the benchmark..
@@ -56,8 +56,8 @@ Microbenchmark for network : resnext101
 Num devices: 1
 Dtype: FP32
 Mini batch size [img] : 128
-Time per mini-batch : 1.7526390504837037
-Throughput [img/sec] : 73.03272169171045
+Time per mini-batch : 1.7448194885253907
+Throughput [img/sec] : 73.36002425567666
 ```
 ### Running sample benchmark#2
 ```
@@ -65,7 +65,7 @@ singularity run pytorch171.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 23:21:15 UTC 2021
+Container was created Fri Apr 16 00:38:26 UTC 2021
 CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch/caffe2/python/examples /home/USERHOME/Documents; cd /home/USERHOME/Documents/examples; python3 /home/USERHOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
 Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops as it is not a valid file.
 Ignoring @/caffe2/caffe2/contrib/nccl:nccl_ops as it is not a valid file.
@@ -81,5 +81,6 @@ INFO:data_parallel_model:Parallelizing model for devices: [0, 1]
 INFO:data_parallel_model:Create input and model training operators
 INFO:data_parallel_model:Model for GPU : 0
 INFO:data_parallel_model:Model for GPU : 1
+INFO:data_parallel_model:Adding gradient operators
 ...output snipped...
 ```
