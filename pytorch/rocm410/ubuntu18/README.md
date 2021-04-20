@@ -48,7 +48,7 @@ singularity run pytorch181.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 23:23:57 UTC 2021
+Container was created Mon Apr 19 23:48:29 UTC 2021
 CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch-micro-benchmarking /home/USERHOME/Documents; cd /home/USERHOME/Documents/pytorch-micro-benchmarking; python3 micro_benchmarking_pytorch.py --network resnext101  --batch-size 128  --iterations 100
 INFO: running forward and backward for warmup.
 INFO: running the benchmark..
@@ -67,7 +67,7 @@ singularity run pytorch181.rocm410.ubuntu18.sif /bin/bash -c "cp -r /opt/pytorch
 ```
 ##### Output
 ```
-Container was created Thu Apr 15 23:23:57 UTC 2021
+Container was created Mon Apr 19 23:48:29 UTC 2021
 CWD: /opt/pytorch Launching: /bin/bash -c cp -r /opt/pytorch/caffe2/python/examples /home/USERHOME/Documents; cd /home/USERHOME/Documents/examples; python3 /home/USERHOME/Documents/examples/resnet50_trainer.py --train_data null --batch_size 16 --epoch_size 1000 --num_epochs 2 --num_gpus 2
 Ignoring @/caffe2/caffe2/contrib/gloo:gloo_ops as it is not a valid file.
 Ignoring @/caffe2/caffe2/contrib/nccl:nccl_ops as it is not a valid file.
