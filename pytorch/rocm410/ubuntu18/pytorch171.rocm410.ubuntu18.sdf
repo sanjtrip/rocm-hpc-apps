@@ -1,7 +1,7 @@
 # V1.1 ROCM-4.1.0-based Pytorch-1.7.1 Singularity Container Definition file for Ubuntu18
 #
 
-Bootstrap: docker-daemon
+Bootstrap: docker
 From: sanjtrip/pytorch171-rocm410-ubuntu18:version1
 
 %post
