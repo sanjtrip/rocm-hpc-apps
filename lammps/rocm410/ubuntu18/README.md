@@ -36,10 +36,13 @@ singularity run-help lammps.rocm410.ubuntu18.sif
 ```
 ##### Output
 ```
+    singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd /opt/lammps_install/lammps; cp -r examples/melt $HOME/Documents/"
+    singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/melt; LD_LIBRARY_PATH=/opt/ompi/lib /opt/ompi/bin/mpirun -np 1 lmp  -in in.melt -sf gpu -pk gpu 1"
 ```
 
 ### Copy LAMMPS benchmark samples from container to $HOME/Documents on host
 ```
+singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd /opt/lammps_install/lammps; cp -r examples/melt $HOME/Documents/"
 ```
 ##### Output
 ```
@@ -47,9 +50,26 @@ singularity run-help lammps.rocm410.ubuntu18.sif
 
 ### Running sample benchmark after above copy
 ```
+singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd $HOME/Documents/melt; LD_LIBRARY_PATH=/opt/ompi/lib /opt/ompi/bin/mpirun -np 1 lmp  -in in.melt -sf gpu -pk gpu 1"
 ```
 ##### Output
 ```
+--------------------------------------------------------------------------
+WARNING: There is at least non-excluded one OpenFabrics device found,
+but there are no active ports detected (or Open MPI was unable to use
+them).  This is most certainly not what you wanted.  Check your
+cables, subnet manager configuration, etc.  The openib BTL will be
+ignored for this job.
+
+  Local host: gb-hq-23
+--------------------------------------------------------------------------
+  [1618902436.177380] [gb-hq-23:28   :0]         parser.c:1600 UCX  WARN  unused env variable: UCX_HOME (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+LAMMPS (29 Oct 2020)
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+Created orthogonal box = (0.0000000 0.0000000 0.0000000) to (16.795962 16.795962 16.795962)
+  1 by 1 by 1 MPI processor grid
+Created 4000 atoms
+  create_atoms CPU = 0.000 seconds
 ...output snipped...
 ```
 
@@ -80,10 +100,11 @@ To install or update the driver, follow the installation instructions at:
 
 #### Singularity Run Failure Message On Incompatible ROCm Environment
 ```
+singularity run lammps.rocm410.ubuntu18.sif /bin/bash -c "cd /opt/lammps_install/lammps; cp -r examples/melt $HOME/Documents/"
 ```
 ###### Output
 ```
-Container was created Tue Apr 13 22:40:25 UTC 2021
+Container was created Tue Apr 20 07:56:12 UTC 2021
 
 Error: Incompatible ROCm environment. The Docker container
 requires the latest kernel driver to operate correctly.
