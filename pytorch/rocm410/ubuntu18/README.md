@@ -14,6 +14,11 @@ sudo docker run -it --privileged --ipc=host --network=host --device=/dev/kfd --d
 # Launch container in interactive mode, bash shell
 sudo podman run -it --privileged docker://sanjtrip/pytorch181-rocm410-ubuntu18:version1 bash
 ```
+#### Image Name + Tag | Description
+```
+pytorch181-rocm410-ubuntu18:version1   ->   Pytorch v1.8.1 based on ROCm v4.1.0 On Ubuntu18 (Version is version1)
+pytorch171-rocm410-ubuntu18:version1   ->   Pytorch v1.7.1 based on ROCm v4.1.0 On Ubuntu18 (Version is version1)
+```
 
 ### 2.0 Steps to build Singularity container from docker image
 #### Download Singularity Definition File
